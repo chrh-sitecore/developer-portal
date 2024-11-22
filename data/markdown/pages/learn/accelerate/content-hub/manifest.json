@@ -1,0 +1,90 @@
+{
+  "title": "Sitecore Accelerate for Partners",
+  "description": "Tips for teams working on Content Hub projects from developers in the field",
+  "heading": false,
+  "path": "/learn/accelerate/content-hub",
+  "showRootAsSections": true,
+  "routes": [
+    {
+      "title": "Pre-development",
+      "path": "pre-development",
+      "ignoreLink": true,
+      "children": [
+        {
+          "title": "Content Hub Insights",
+          "path": "content-hub-insights"
+        }
+      ]
+    },
+    {
+      "title": "Implementation",
+      "path": "implementation",
+      "ignoreLink": true,
+      "children": [
+        {
+          "title": "Configuration",
+          "path": "configuration",
+          "ignoreLink": true,
+          "children": [
+            {
+              "title": "Functional Security (Users and User Groups)",
+              "path": "functional-security",
+              "ignoreLink": true,
+              "children": [
+                {
+                  "title": "SSO and Auto-Assignment",
+                  "path": "sso-and-auto-assignment"
+                },
+                {
+                  "title": "User Group Setups",
+                  "path": "user-group-setups"
+                }
+              ]
+            },
+            {
+              "title": "Schema Management",
+              "path": "schema-management",
+              "ignoreLink": true,
+              "children": [
+                {
+                  "title": "Path, Path relation and Path hierarchy",
+                  "path": "path-path-relation-and-path-hierarchy"
+                },
+                {
+                  "title": "Taxonomy vs Option List",
+                  "path": "taxonomy-vs-option-list"
+                },
+                {
+                  "title": "Using direct or indirect security condition with Many to Many relation",
+                  "path": "using-direct-or-indirect-security-condition-with-many-to-many-relation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Custom Logic",
+          "path": "custom-logic",
+          "ignoreLink": true,
+          "children": [
+            {
+              "title": "CH Scripts Guidance and Scenarios",
+              "path": "ch-scripts-guidance-and-scenarios"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Final Steps",
+      "path": "final-steps",
+      "ignoreLink": true,
+      "children": [
+        {
+          "title": "Migration Guide",
+          "path": "migration-guide"
+        }
+      ]
+    }
+  ]
+}
