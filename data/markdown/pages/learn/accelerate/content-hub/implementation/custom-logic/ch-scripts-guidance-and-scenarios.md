@@ -1,46 +1,55 @@
 ---
 title: 'CH Scripts Guidance and Scenarios'
-description: 'This Sitecore Content Hub Scripting Guide provides an overview of the steps and best practices for creating, managing, and implementing custom scripts within Sitecore Content Hub. The guide also includes guidance on pre-scripting audits, data mapping for efficient automation, quality control practices, and post-implementation checks to ensure that scripts enhance content structure, searchability, and usability within Sitecore Content Hub. There are also code examples to illustrate common scripting use-cases.'
-hasSubPageNav: false
-hasInPageNav: false
+description: 'This Sitecore Content Hub Scripting Guide provides an overview of the steps and best practices for creating, managing, and implementing custom scripts within Sitecore Content Hub.'
+hasSubPageNav: true
+hasInPageNav: true
 area: ['accelerate']
-lastUpdated: '2024-11-13'
+lastUpdated: '2024-12-02'
 breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes > CH Implementation > CH Custom Logic'
 author: 'Chris Howarth'
+audience: 'Technical Implementers (Developers), Solution Architects, Product Owners/Business Stakeholders'
 ---
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) Problem
+|     |     |
+| --- | --- |
+| **Recipe name** | CH Scripts Guidance and Scenarios |
+| **Description** | This Sitecore Content Hub Scripting Guide provides an overview of the steps and best practices for creating, managing, and implementing custom scripts within Sitecore Content Hub. |
+| **Reference Audience** | Technical Implementers (Developers), Solution Architects, Product Owners/Business Stakeholders |
+| **Jira #** | RCPS-8 - CH Scripts Guidance Ready for Peer Review |
+| **Project Step** | Implementation |
+| **Chapter** | Custom Logic |
+
+## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) Context
 
 Sitecore Content Hub offers extensive internal scripting functionality and its use requires a good understanding of both the platform's APIs and its entity model to achieve good results. The primary goals for an implementation include:
 
-1.  **Understanding the Entity Model**  
-    Sitecore Content Hub relies on a detailed entity model with interconnected asset types, metadata fields, and taxonomy structures. Understanding and correctly mapping this model is essential for effective scripting. Scripts that don’t accurately account for these relationships may fail to execute or produce inconsistent results.
+*   Understanding the Entity Model
     
-2.  **SDK Knowledge**  
-    Sitecore Content Hub scripting uses SDK interactions, which requires knowledge of the Content Hub SDKs and data structures. Developers must understand best practice to ensure scripts are efficient and performant, especially when the Content Hub instance contains large volumes of assets or metadata.
+*   SDK Knowledge
     
-3.  **Error Handling and Debugging**  
-    Errors may stem from various sources, including incorrect SDK calls, data mismatches, unintended changes in related content structures, or even changes to external services. It is important to implement robust error handling and logging processes within Scripts so any issues can be easily diagnosed and resolved.
+*   Error Handling and Debugging,
     
-4.  **Performance and Scalability**  
-    Scripts that manage extensive datasets or complex workflows can impact Content Hub’s performance. Ensuring scripts are optimised to handle large volumes of assets or complex processing tasks without slowing down the system is critical, particularly for high-traffic environments or content-heavy implementations.
+*   Performance and Scalability
     
-5.  **Platform-Specific Constraints**  
-    Sitecore Content Hub has specific limitations, such as API rate limits, workflow dependencies, and permissions that affect what scripts can achieve. These constraints often require careful planning and sometimes external implementations to ensure scripts operate smoothly and within system boundaries.
+*   Platform-Specific Constraints
     
-6.  **Documentation**  
-    Scripting documentation must be thorough and accessible, as each script may need to be updated or repurposed over time.
-    
-7.  **Testing**  
-    Comprehensive testing is also essential to ensure scripts perform consistently and adapt to Content Hub updates or changes in organisational requirements.
+*   Documentation and Testing
     
 
 Successfully overcoming these challenges requires a combination of technical expertise, thorough planning, and ongoing monitoring to ensure scripts function effectively and contribute positively to Sitecore Content Hub’s performance and usability.
 
-## ![(lightbulb)](/images/learn/accelerate/content-hub/img/icons/emoticons/lightbulb_on.png) Solution
+The guide includes guidance on pre-scripting audits, data mapping for efficient automation, quality control practices, and post-implementation checks to ensure that scripts enhance content structure, searchability, and usability within Sitecore Content Hub. There are also code examples to illustrate common scripting use-cases.
+
+The guide is squarely aimed at Technical Implementors, but there will need to be feed-in from Solution Architects for wider integration topics, and from Product Owners/Business Stakeholders for business logic and data shaping.
+
+## ![(lightbulb)](/images/learn/accelerate/content-hub/img/icons/emoticons/lightbulb_on.png) Execution
 
 Effective Implementation of scripts in Sitecore Content Hub requires strategies to address the platform’s complexities and ensure scripts are reliable, performant, and maintainable. Here we will discuss solutions and best practice on each of the points posed in the section above.
 
+More information on execution can be found in the dedicated recipe on the Discovery process.
+
 ### 1\. Gain a deep understanding of the entity model
+
+Sitecore Content Hub relies on a detailed entity model with interconnected asset types, metadata fields, and taxonomy structures. Understanding and correctly mapping this model is essential for effective scripting. Scripts that don’t accurately account for these relationships may fail to execute or produce inconsistent results.
 
 1.  Begin with a detailed analysis of Sitecore Content Hub’s entity model, including asset types, metadata structures, and taxonomies.
     
@@ -55,6 +64,8 @@ For example, suppose you’re automating asset ingestion, and you need to assign
 
 ### 2\. Learn and Leverage Sitecore’s SDKs
 
+Sitecore Content Hub scripting uses SDK interactions, which requires knowledge of the Content Hub SDKs and data structures. Developers must understand best practice to ensure scripts are efficient and performant, especially when the Content Hub instance contains large volumes of assets or metadata.
+
 1.  Familiarise the development team with the Sitecore Content Hub Scripting SDK by utilising Sitecore’s comprehensive documentation to ensure scripts that interact with assets and metadata are both correct and optimised.
     
 2.  Code should be structured carefully to balance performance and resource usage.
@@ -66,18 +77,24 @@ For example, suppose you’re automating asset ingestion, and you need to assign
 
 ### 3\. Implement error handling and logging
 
+Errors may stem from various sources, including incorrect SDK calls, data mismatches, unintended changes in related content structures, or even changes to external services. It is important to implement error handling and logging processes within Scripts so any issues can be easily diagnosed and resolved.
+
 1.  Incorporate robust error handling and detailed logging mechanisms within all scripts to improve troubleshooting exercises.
     
 2.  By capturing specific errors and tracking data flow, teams can identify and address issues quickly. Implementing a structured approach to logging helps developers diagnose the root cause of issues, whether they stem from SDK errors, data mismatches, or platform constraints.
     
 3.  Leverage the different log levels (debug, info, warning, error) to ensure you have full information when debugging is required or minimal resource use when in production.
     
-4.  Use consistent naming, content and structure conventions, across your Script logs.
+4.  Scripts can be debugged using the ch-cli - see the documentation for full details.
     
-5.  It is important to be concise and to combine information into each log entry as only the last 50 messages can be viewed in the script logs.
+5.  Use consistent naming, content and structure conventions, across your Script logs.
+    
+6.  It is important to be concise and to combine information into each log entry as only the last 50 messages can be viewed in the script logs.
     
 
 ### 4\. Optimise for performance and scalability
+
+Scripts that manage extensive datasets or complex workflows can impact Content Hub’s performance. Ensuring scripts are optimised to handle large volumes of assets or complex processing tasks without slowing down the system is critical, particularly for high-traffic environments or content-heavy implementations.
 
 1.  To ensure scripts operate efficiently, design them to handle operations in manageable batches and leverage caching mechanisms when possible.
     
@@ -98,6 +115,8 @@ For example, suppose you’re automating asset ingestion, and you need to assign
 
 ### 5\. Work within platform constraints
 
+Sitecore Content Hub enforces limitations, such as API rate limits, workflow dependencies, and permissions that affect what scripts can achieve. These constraints often require careful planning and sometimes external implementations to ensure scripts operate smoothly and within system boundaries.
+
 1.  Avoid doing bulk or long running operations with scripts. Sitecore recommend keeping the total script run time below 10 minutes. After 12 minutes, the script worker considers the script stuck and starts a new worker to relaunch it. This can cause resource starvation and data inconsistency.
     
 2.  It is not possible to make REST API calls from a script. If this is required then another approach than Scripting should be used, e.g. via an via a connector or an external integration.
@@ -106,6 +125,8 @@ For example, suppose you’re automating asset ingestion, and you need to assign
     
 
 ### 6\. Documentation and version control
+
+Scripting documentation must be thorough and accessible, as each script may need to be updated or repurposed over time.
 
 1.  Document each script’s purpose, affected entities, and dependencies to simplify future maintenance and updates. Document details of the script’s triggers as appropriate.
     
@@ -122,6 +143,8 @@ For example, suppose you’re automating asset ingestion, and you need to assign
 
 ### 7\. Testing and Monitoring
 
+Comprehensive testing is essential to ensure scripts perform consistently and adapt to Content Hub updates or changes in organisational requirements.
+
 1.  Implement a rigorous testing process that simulates real-world conditions, ensuring scripts work as expected under various scenarios.
     
 2.  Regular monitoring and audits of script performance post-deployment allow teams to detect issues proactively and optimise scripts as the data model and system demands evolve.
@@ -137,7 +160,7 @@ For example, suppose you’re automating asset ingestion, and you need to assign
 
 By following these solutions, teams can build and maintain scripts that enhance Sitecore Content Hub’s functionality, streamline asset and metadata management, and ensure content integrity, usability, and efficiency in the long term.
 
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f5e8.png) Code Examples
+## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f5e8.png) Insights
 
 This section contains code examples to demonstrate some common use-cases for Content Hub scripting. Note that most scripts depend on custom schema in order to do anything meaningful, so they may require some changes to your Content Hub schema.
 
@@ -270,7 +293,7 @@ foreach (var approvedEntityId in approvedEntityIds)
 3.  You cannot impersonate the administator user.
     
 
-More on Impersonation: [https://doc.sitecore.com/ch/en/developers/cloud-dev/impersonation.html](https://doc.sitecore.com/ch/en/developers/cloud-dev/impersonation.html)
+You can find more on Impersonation in the documentation.
 
 ### SSO role mapping
 
@@ -657,8 +680,11 @@ else
 |     |     |
 | --- | --- |
 |     | **Recipe** |
-| 1   | [Triggers and Actions](Triggers_and_Actions) |
-| 2   |     |
+| 1   | [Triggers and Actions](Triggers-and-Actions) |
+| 2   | [CH Discovery](CH-Discovery) |
+| 3   | [CH External Scripting Guidance and Scenarios](CH-External-Scripting-Guidance-and-Scenarios) |
+| 4   | [SSO and Auto-Assignment](SSO-and-Auto-Assignment) |
+| 5   |     |
 
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f517.png) Related Documentation
 
@@ -667,7 +693,9 @@ else
 |     | **Documentation Link** |
 | 1   | Learn and Leverage [https://doc.sitecore.com/ch/en/developers/cloud-dev/scripts.html](https://doc.sitecore.com/ch/en/developers/cloud-dev/scripts.html) [https://doc.sitecore.com/ch/en/developers/cloud-dev/script-types.html](https://doc.sitecore.com/ch/en/developers/cloud-dev/script-types.html) |
 | 2   | Work Within Restraints[https://doc.sitecore.com/ch/en/developers/cloud-dev/script-restriction.html#permitted-libraries](https://doc.sitecore.com/ch/en/developers/cloud-dev/script-restriction.html#permitted-libraries) |
-| 3   | Documentation and version control[https://doc.sitecore.com/ch/en/developers/cloud-dev/content-hub-command-line-interface--cli-.html](https://doc.sitecore.com/ch/en/developers/cloud-dev/content-hub-command-line-interface--cli-.html) |
+| 3   | Debugging scripts in Visual Studio Code [https://doc.sitecore.com/ch/en/developers/cloud-dev/debug-a-script-using-visual-studio-code.html](https://doc.sitecore.com/ch/en/developers/cloud-dev/debug-a-script-using-visual-studio-code.html) |
+| 4   | Documentation and version control[https://doc.sitecore.com/ch/en/developers/cloud-dev/content-hub-command-line-interface--cli-.html](https://doc.sitecore.com/ch/en/developers/cloud-dev/content-hub-command-line-interface--cli-.html) |
+| 5   | Impersonating another user [https://doc.sitecore.com/ch/en/developers/cloud-dev/impersonation.html](https://doc.sitecore.com/ch/en/developers/cloud-dev/impersonation.html) |
 
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f517.png) Related Learning Materials
 
@@ -676,21 +704,5 @@ List any related Learning activity to this recipe.
 |     |     |
 | --- | --- |
 |     | **Learning link** |
-| 1   |     |
-| 2   |     |
-
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f517.png) Related 360 Activities
-
-|     |     |
-| --- | --- |
-|     | **Activity Link** |
-| 1   |     |
-| 2   |     |
-
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f517.png) Related Value Realization Framework Activities
-
-|     |     |
-| --- | --- |
-|     | **VRF Card Link** |
 | 1   |     |
 | 2   |     |

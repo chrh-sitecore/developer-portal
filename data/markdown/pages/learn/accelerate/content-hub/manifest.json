@@ -6,13 +6,25 @@
   "showRootAsSections": true,
   "routes": [
     {
-      "title": "Pre-development",
-      "path": "pre-development",
+      "title": "Pre-development (temp)",
+      "path": "pre-development,-implementation,-final-steps,-appendix",
       "ignoreLink": true,
       "children": [
         {
-          "title": "Content Hub Insights",
-          "path": "content-hub-insights"
+          "title": "Debugging User Security",
+          "path": "debugging-user-security"
+        },
+        {
+          "title": "Migration Guide",
+          "path": "migration-guide"
+        },
+        {
+          "title": "State Flow and Approval Setup",
+          "path": "state-flow-and-approval-setup"
+        },
+        {
+          "title": "Project Planning",
+          "path": "ch-project-planning"
         }
       ]
     },
@@ -22,10 +34,18 @@
       "ignoreLink": true,
       "children": [
         {
+          "title": "Multi Environments Deployment",
+          "path": "multi-environments-deployment"
+        },
+        {
           "title": "Configuration",
           "path": "configuration",
           "ignoreLink": true,
           "children": [
+            {
+              "title": "Paths across entity definitions",
+              "path": "paths-across-entity-definitions"
+            },
             {
               "title": "Functional Security (Users and User Groups)",
               "path": "functional-security",
@@ -47,10 +67,6 @@
               "ignoreLink": true,
               "children": [
                 {
-                  "title": "Path, Path relation and Path hierarchy",
-                  "path": "path-path-relation-and-path-hierarchy"
-                },
-                {
                   "title": "Taxonomy vs Option List",
                   "path": "taxonomy-vs-option-list"
                 },
@@ -68,8 +84,12 @@
           "ignoreLink": true,
           "children": [
             {
-              "title": "CH Scripts Guidance and Scenarios",
+              "title": "Internal Scripts Guidance and Scenarios",
               "path": "ch-scripts-guidance-and-scenarios"
+            },
+            {
+              "title": "External Scripting Guidance and Scenarios",
+              "path": "CH-External-Scripting-Guidance-and-Scenarios"
             }
           ]
         }
@@ -81,8 +101,8 @@
       "ignoreLink": true,
       "children": [
         {
-          "title": "Migration Guide",
-          "path": "migration-guide"
+          "title": "Testing and Quality Assurance",
+          "path": "testing-and-quality-assurance"
         }
       ]
     }

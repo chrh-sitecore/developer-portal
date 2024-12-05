@@ -1,43 +1,54 @@
 ---
 title: 'Migration Guide'
-description: 'This Content Migration guide outlines the steps needed to move content assets, metadata, and related data from legacy systems into Sitecore Content Hub. The process includes pre-migration auditing, data mapping, quality control measures, and post-migration verification to ensure all content retains its structure, searchability, and usability in the new environment.'
-hasSubPageNav: false
-hasInPageNav: false
+description: 'Ensuring a Seamless and Structured Migration to Sitecore Content Hub'
+hasSubPageNav: true
+hasInPageNav: true
 area: ['accelerate']
-lastUpdated: '2024-11-17'
+lastUpdated: '2024-12-02'
 breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes > CH Final Steps'
 author: 'Korina Huizar'
+audience: 'Pick Audience based on <a href="https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience" data-card-appearance="inline" rel="nofollow">https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience</a>'
 ---
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) Problem
+|     |     |
+| --- | --- |
+| **Recipe name** | Migration Guide |
+| **Description** | Ensuring a Seamless and Structured Migration to Sitecore Content Hub |
+| **Reference Audience** | Pick Audience based on [https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience](https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience) |
+| **Jira #** |     |
+| **Project Step** | Final Steps |
+| **Chapter** |     |
 
-Migrating content into Sitecore Content Hub is a multi-step process that involves moving vast amounts of data, assets, metadata, and associated workflows from legacy systems. This migration must be handled meticulously to avoid data loss, ensure data integrity, and maintain the intended structure and functionality of digital assets. Inadequate planning or testing can lead to significant challenges, including data corruption, metadata mismatches, broken links, and user access issues. This is intended to provide a structured approach to ensure a seamless migration process, minimize risk, and align the migrated data and assets with the new Sitecore Content Hub environment. The objective is to ensure that all assets are successfully transferred, retain their original structure and metadata, and function as expected within Sitecore Content Hub, facilitating a smooth transition for users and supporting organizational goals.
+## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) **Context**
 
-## ![(lightbulb)](/images/learn/accelerate/content-hub/img/icons/emoticons/lightbulb_on.png) Solution
+Migrating content into Sitecore Content Hub is a multi-step process that involves moving vast amounts of data, assets, metadata, and associated workflows from legacy systems. This migration must be handled meticulously to avoid data loss, ensure data integrity, and maintain the intended structure and functionality of digital assets. Inadequate planning or testing can lead to significant challenges, including data corruption, metadata mismatches, broken links, and user access issues.
 
-This guide offers a step-by-step framework for planning, executing, and validating content migration to ensure that assets, metadata, permissions, and workflows are transferred accurately and are fully operational within Content Hub. This recipe provides guidelines on pre-migration preparation, data mapping, migration execution, and post-migration testing. By following this structured approach, the guide aims to reduce errors, streamline migration tasks, and maintain the quality and organization of content as it moves into the Content Hub environment. This migration guide also provides best practices to address any unforeseen issues during migration and establish procedures for ongoing data integrity and optimization post-migration.
+This is intended to provide a structured approach to ensure a seamless migration process, minimize risk, and align the migrated data and assets with the new Sitecore Content Hub environment. The objective is to ensure that all assets are successfully transferred, retain their original structure and metadata, and function as expected within Sitecore Content Hub, facilitating a smooth transition for users and supporting organizational goals.
+
+## ![(lightbulb)](/images/learn/accelerate/content-hub/img/icons/emoticons/lightbulb_on.png) **Execution**
+
+This framework provides a structured approach to planning, executing, and validating content migration, ensuring that assets, metadata, permissions, and workflows are accurately transferred and fully functional within Content Hub.
+
+Key phases include pre-migration preparation, data mapping, migration execution, and post-migration testing, all designed to streamline tasks, minimize errors, and maintain content quality and organization.
+
+It also incorporates strategies for addressing unforeseen challenges during migration and establishes procedures to ensure ongoing data integrity and optimization in the Content Hub environment.
 
 |     |     |     |
 | --- | --- | --- |
 |     | **Topic** | **Checklist** |
 | 1   | Pre-Migration Assessment and Planning | 1.  Conduct an inventory of assets, metadata, and associated workflows in the legacy system. Outline existing data sources, file types, how many files and versions, how much data in total?\<br\>    \<br\>2.  Determine which data will be brought to which environment. For examples many customer’s have a DEV and QA environment with a smaller subset of data in comparison to their production environments.\<br\>    \<br\>3.  Define migration scope, including data to be migrated and any non-essential items to be archived.\<br\>    \<br\>4.  Assess data quality and cleanliness in the legacy system to avoid migrating unnecessary or corrupted data.\<br\>    \<br\>5.  Identify source file location that includes individual file direct links. All files to be migrated need to be accessible via a direct link. Example: Azure Blob Storage\<br\>    \<br\>6.  Clean up assets that don’t need to be migrated.\<br\>    \<br\>7.  Collect all file metadata. This should be collected in a spreadsheet that includes all filenames, direct links and any other metadata that should be migrated to Content Hub​\<br\>    \<br\>8.  Establish a migration timeline, including key milestones and roles for the migration team. |
-| 2   | Data Mapping and Metadata Structure | 1.  Develop a data mapping plan to align legacy metadata fields with Sitecore Content Hub metadata fields.\<br\>    \<br\>2.  Define data transformation requirements (e.g., format conversions, taxonomy updates).\<br\>    \<br\>3.  Validate that metadata and tags are mapped accurately to support search functionality and asset discoverability.\<br\>    \<br\>4.  Separators for multi-valued attributes​ i.e. EU \| USA \| APAK\<br\>    \<br\>5.  List of values mapping to correct value​\<br\>    \<br\>6.  Hierarchies including full path​ |
-| 3   | Content Migration Execution | 1.  Select the appropriate migration tools or scripts, considering the complexity and volume of content. Many use an excel file as the source of legacy data and leverage Content Hub import/export functionality. Red more below [https://sitecore.atlassian.net/wiki/spaces/FM1/pages/edit-v2/5381128233?draftShareId=fa0d6578-10be-46ff-ae7a-9b566d6c6a3d#Using-Excel](https://sitecore.atlassian.net/wiki/spaces/FM1/pages/edit-v2/5381128233?draftShareId=fa0d6578-10be-46ff-ae7a-9b566d6c6a3d#Using-Excel)\<br\>    \<br\>2.  Set up a migration environment to test data transfer in a controlled setting.\<br\>    \<br\>3.  Ensure that permissions and role-based access control (RBAC) settings are properly configured in Sitecore Content Hub.\<br\>    \<br\>4.  Conduct batch migration tests to identify and address potential issues before the full migration.\<br\>    \<br\>5.  Monitor timing in QA to be able to provide estimated duration for final migration on Prod​ |
+| 2   | Data Mapping and Metadata Structure | 1.  Develop a data mapping plan to align legacy metadata fields with Sitecore Content Hub metadata fields.\<br\>    \<br\>2.  Define data transformation requirements (e.g., format conversions, taxonomy updates).\<br\>    \<br\>3.  Validate that metadata and tags are mapped accurately to support search functionality and asset discoverability.\<br\>    \<br\>4.  Separators for multi-valued attributes​ i.e. EU \| USA \| APAK\<br\>    \<br\>5.  List of values mapping to correct value​\<br\>    \<br\>6.  Hierarchies including full path​\<br\>    \<br\>7.  We recommend creating the following properties to assist during migration:\<br\>    \<br\>    1.  BatchID property to give your import batches numbers to assist with troubleshooting.\<br\>        \<br\>    2.  Create an additional property to store the ID of the previous DAM. |
+| 3   | Content Migration Execution | 1.  Select the appropriate migration tools or scripts, considering the complexity and volume of content. Many use an excel file as the source of legacy data and leverage Content Hub import/export functionality. See more below [https://sitecore.atlassian.net/wiki/spaces/FM1/pages/edit-v2/5381128233#%F0%9F%97%A8%EF%B8%8F--Insights](https://sitecore.atlassian.net/wiki/spaces/FM1/pages/edit-v2/5381128233#%F0%9F%97%A8%EF%B8%8F--Insights)\<br\>    \<br\>2.  Set up a migration environment to test data transfer in a controlled setting.\<br\>    \<br\>3.  Ensure that permissions and role-based access control (RBAC) settings are properly configured in Sitecore Content Hub.\<br\>    \<br\>4.  Conduct batch migration tests to identify and address potential issues before the full migration.\<br\>    \<br\>5.  Monitor timing in QA to be able to provide estimated duration for final migration on Prod​.\<br\>    \<br\>6.  Monitor graph during migration. |
 | 4   | Migration Testing and Quality Assurance | 1.  Implement quality assurance checks to validate data accuracy, completeness, and integrity post-migration.\<br\>    \<br\>2.  Test content accessibility, metadata accuracy, and file functionality (e.g., preview, download).\<br\>    \<br\>3.  Verify user roles and permissions to ensure only authorized personnel have access to relevant content. |
 | 5   | Workflow Validation and Asset Usability | 1.  Test workflows and automation in Sitecore Content Hub to ensure they function correctly with migrated content.\<br\>    \<br\>2.  Validate that asset relationships (e.g., dependencies, collections) are maintained post-migration.\<br\>    \<br\>3.  Ensure that all assets and their associated workflows meet project goals and usability expectations. |
-| 6   | **Post-Migration Monitoring and Optimization** | 1.  Set up post-migration monitoring to track system performance, identify potential issues, and resolve them promptly.\<br\>    \<br\>2.  Implement a feedback loop to gather user input on usability and functionality of migrated content.\<br\>    \<br\>3.  Develop an optimization plan to address any ongoing content organization, tagging, or workflow issues that emerge after migration. |
-| 7   |     |     |
+| 6   | Post-Migration Monitoring and Optimization | 1.  Set up post-migration monitoring to track system performance, identify potential issues, and resolve them promptly.\<br\>    \<br\>2.  Implement a feedback loop to gather user input on usability and functionality of migrated content.\<br\>    \<br\>3.  Develop an optimization plan to address any ongoing content organization, tagging, or workflow issues that emerge after migration. |
 
-### Using Excel
+## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f5e8.png) **Insights**
 
-### **Data Migration**
+Importing and exporting in Sitecore’s Content Hub enables asset and asset metadata migration from a legacy system. An Microsoft Excel file is used as the source of legacy data. In order to successfully migrate data, specific rules must be followed to avoid technical errors that would stop the import. We will now examine those rules and how they affect the structure of the Excel file used to import legacy data into your Content Hub.
 
-Importing and exporting in Sitecore’s Content Hub enables asset and asset metadata migration from a legacy system. An Excel file is used as the source of legacy data. In order to successfully migrate data, specific rules must be followed to avoid technical errors that would stop the import. We will now examine those rules and how they affect the structure of the Excel file used to import legacy data into your Content Hub.
+### 1\. Create an Excel Import File
 
-### Create an Excel Import File
-
-There are ground rules to follow when importing the Excel document into Sitecore Content Hub.
-
-Ground rules for importing:
+There are a set of ground rules to follow when importing the Excel document into Sitecore Content Hub.
 
 1.  **One entity definition per worksheet:** Each entity definition being imported into a Sitecore Content Hub requires its own worksheet. A worksheet must contain data for only one entity definition.
     
@@ -56,7 +67,7 @@ Ground rules for importing:
 8.  **M.Asset definition requires the “File” column to import your media files:** The File column must be present as the first column in the worksheet for the **M.Asset** definition. It must contain the URL of either a public or authorized link. The import process will use the URL to run a fetch job that will copy the media file into the Sitecore Content Hub cloud-based blob storage. When this fetch job is complete, a corresponding processing job will begin; its purpose is to assign the metadata stored in the Excel row into the newly created asset and persist it.
     
 
-![Screenshot 2024-11-04 at 14.15.09.png](/images/learn/accelerate/content-hub/attachments/5381128233/5382701058.png?width=760)
+![DataMigration - SampleFile.png](/images/learn/accelerate/content-hub/attachments/5381128233/5475729894.png?width=647)
 
 *   Assign a meaningful, user-determined identifier. By default, if no identifier value is set, the system will create a GUID value and assign it as default identifier.
     
@@ -67,9 +78,9 @@ Ground rules for importing:
 *   The File column will be used to run a fetch job with the given URL, with either a public or authorized link.
     
 
-**Setup Data Export in Content Hub**
+### **2\. Setup Data Export in Content Hub**
 
-In this part, you will examine how to extract information out of Content Hub. You will create different export profiles to retrieve the information you are interested in, then enable the export for users directly on the search. When exporting data out of Content Hub with the Excel export feature, you can make use of the export profiles to define which metadata you want to export (e.g., **Name, Definition, IsDefault**, and **Setting**).
+You will create different export profiles to retrieve the information you are interested in, then enable the export for users directly on the search. When exporting data out of Content Hub with the Excel export feature, you can make use of the export profiles to define which metadata you want to export (e.g., **Name, Definition, IsDefault**, and **Setting**).
 
 ![Screenshot 2024-11-04 at 13.55.27.png](/images/learn/accelerate/content-hub/attachments/5381128233/5381160993.png?width=509)
 
@@ -114,20 +125,7 @@ Example:
 `"version": "1.1"`  
 `\}`
 
-### Additional Tips:
-
-Nicky Vadera to verify.
-
-Prior to go live you can update the following to assist migration: Active scripts moved to background: Validation script moved to flag
-
-*   Zip files: Triggers extract archives: disabled during migration. To be enabled after and job to be run
-    
-*   Monitor graph during migration
-    
-*   Create a BatchID property to give your import batches numbers to assist with troubleshooting.
-    
-*   Create an additional property to store the ID of the previous DAM.
-    
+For some clients it may make sense to temporarily move active scripts to background during migration as the metadata is already accurate while in other instances your scripts may be need. It it worth reviewing to see if it’s worthwhile to temporarily disable.
 
 remember to enable after migration is complete.
 
@@ -159,10 +157,6 @@ M.Asset
 
 M.PCM
 
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f5e8.png) Discussion
-
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f329.png) Product Gaps
-
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f517.png) Related Recipes
 
 |     |     |
@@ -186,21 +180,5 @@ List any related Learning activity to this recipe.
 |     |     |
 | --- | --- |
 |     | **Learning link** |
-| 1   |     |
-| 2   |     |
-
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f517.png) Related 360 Activities
-
-|     |     |
-| --- | --- |
-|     | **Activity Link** |
-| 1   |     |
-| 2   |     |
-
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f517.png) Related Value Realization Framework Activities
-
-|     |     |
-| --- | --- |
-|     | **VRF Card Link** |
 | 1   |     |
 | 2   |     |
