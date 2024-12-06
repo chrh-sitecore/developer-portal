@@ -9,15 +9,6 @@ breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes
 author: 'Xavier Cobbaert'
 audience: 'Solution Architects, Technical Implementers'
 ---
-|     |     |
-| --- | --- |
-| **Recipe name** | Paths across entity definitions |
-| **Description** | Setting up a path across entity definitions to show hierarchy |
-| **Reference Audience** | Solution Architects, Technical Implementers |
-| **Jira #** | RCPS-1 - Path, Path relation and hiearchy Ready for deployment |
-| **Project Step** | Implementation |
-| **Chapter** | Configuration |
-
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) **Context**
 
 Path between entities is an important concept in Content Hub who allow to get additional information between entities in the same path. It is commonly misunderstood and demands a thorough and deliberate approach.

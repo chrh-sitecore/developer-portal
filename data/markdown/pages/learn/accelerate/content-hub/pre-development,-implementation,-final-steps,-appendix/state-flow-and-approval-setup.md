@@ -9,15 +9,6 @@ breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes
 author: 'Eric Weiss'
 audience: 'Pick Audience based on <a href="https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience" data-card-appearance="inline" rel="nofollow">https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience</a>'
 ---
-|     |     |
-| --- | --- |
-| **Recipe name** |     |
-| **Description** |     |
-| **Reference Audience** | Pick Audience based on [https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience](https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience) |
-| **Jira #** |     |
-| **Project Step** | Pre-Development, Implementation, Final Steps, Appendix |
-| **Chapter** | Example Discovery |
-
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) **Context**
 
 Add a description of the use case that this recipe will solve, or provide context of what we are trying to approach.

@@ -7,17 +7,8 @@ area: ['accelerate']
 lastUpdated: '2024-11-28'
 breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes > CH Implementation'
 author: 'Korina Huizar'
-audience: 'Project Managers, Solution Architects'
+audience: '<span class="inline-comment-marker" data-ref="cbc22be8-2ec8-4642-86eb-81faa4c49551">Project Managers, Solution Architects</span>'
 ---
-|     |     |
-| --- | --- |
-| **Recipe name** | Testing and Quality Assurance |
-| **Description** | Checklist to support testing and QA in your path to go-live. |
-| **Reference Audience** | Project Managers, Solution Architects |
-| **Jira #** | RCPS-4 - Implementation Testing and Quality Assurance Checklist Ready for deployment |
-| **Project Step** | Final Steps |
-| **Chapter** |     |
-
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) **Context**
 
 Ensuring that the platform is configured correctly, performs optimally, and meets specific project and business goals before launch is essential to avoid costly rework, user dissatisfaction, and operational disruptions. Without a structured, comprehensive approach to implementation testing and quality assurance, it’s easy for integration issues, data inconsistencies, and usability flaws to go undetected. This checklist, or “recipe,” is designed to provide a robust framework to systematically test, validate, and refine Sitecore Content Hub configurations, workflows, and integrations, ensuring a smooth and successful launch.

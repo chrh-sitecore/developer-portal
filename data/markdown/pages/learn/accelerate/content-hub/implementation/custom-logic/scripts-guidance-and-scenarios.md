@@ -4,23 +4,18 @@ description: 'This Sitecore Content Hub Scripting Guide provides an overview of 
 hasSubPageNav: true
 hasInPageNav: true
 area: ['accelerate']
-lastUpdated: '2024-12-02'
+lastUpdated: '2024-12-05'
 breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes > CH Implementation > CH Custom Logic'
 author: 'Chris Howarth'
 audience: 'Technical Implementers (Developers), Solution Architects, Product Owners/Business Stakeholders'
 ---
-|     |     |
-| --- | --- |
-| **Recipe name** | CH Scripts Guidance and Scenarios |
-| **Description** | This Sitecore Content Hub Scripting Guide provides an overview of the steps and best practices for creating, managing, and implementing custom scripts within Sitecore Content Hub. |
-| **Reference Audience** | Technical Implementers (Developers), Solution Architects, Product Owners/Business Stakeholders |
-| **Jira #** | RCPS-8 - CH Scripts Guidance Ready for Peer Review |
-| **Project Step** | Implementation |
-| **Chapter** | Custom Logic |
-
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) Context
 
-Sitecore Content Hub offers extensive internal scripting functionality and its use requires a good understanding of both the platform's APIs and its entity model to achieve good results. The primary goals for an implementation include:
+Sitecore Content Hub offers extensive internal scripting with an internal user-friendly IDE that allows multiple processes and workflows to be automated using a combination of scripts, actions and triggers.
+
+The use of Scripts requires a good understanding of their intended use, the triggers framework and action types. Non-performant scripts can slow down a Content Hub instance, particularly if they are triggered often on high traffic entities (e.g. on Asset modification), or if executed ‘in-process’.
+
+The specific topics covered on this page are:
 
 *   Understanding the Entity Model
     
@@ -35,44 +30,48 @@ Sitecore Content Hub offers extensive internal scripting functionality and its u
 *   Documentation and Testing
     
 
-Successfully overcoming these challenges requires a combination of technical expertise, thorough planning, and ongoing monitoring to ensure scripts function effectively and contribute positively to Sitecore Content Hub’s performance and usability.
+It is important to know and apply the above topics to maintaining Content Hub’s performance and usability.
 
 The guide includes guidance on pre-scripting audits, data mapping for efficient automation, quality control practices, and post-implementation checks to ensure that scripts enhance content structure, searchability, and usability within Sitecore Content Hub. There are also code examples to illustrate common scripting use-cases.
 
-The guide is squarely aimed at Technical Implementors, but there will need to be feed-in from Solution Architects for wider integration topics, and from Product Owners/Business Stakeholders for business logic and data shaping.
+The guide is aimed at Technical Implementers, but there will need to be feed-in from Solution Architects for wider integration topics, and from Product Owners/Business Stakeholders for business logic and data shaping.
 
 ## ![(lightbulb)](/images/learn/accelerate/content-hub/img/icons/emoticons/lightbulb_on.png) Execution
 
-Effective Implementation of scripts in Sitecore Content Hub requires strategies to address the platform’s complexities and ensure scripts are reliable, performant, and maintainable. Here we will discuss solutions and best practice on each of the points posed in the section above.
-
-More information on execution can be found in the dedicated recipe on the Discovery process.
+Implementation of scripts in Sitecore Content Hub requires care to ensure scripts are reliable, performant, and maintainable. Here we will discuss solutions and best practice on each of the points posed in the section above.
 
 ### 1\. Gain a deep understanding of the entity model
 
-Sitecore Content Hub relies on a detailed entity model with interconnected asset types, metadata fields, and taxonomy structures. Understanding and correctly mapping this model is essential for effective scripting. Scripts that don’t accurately account for these relationships may fail to execute or produce inconsistent results.
+Sitecore Content Hub relies on a detailed entity model with interconnected asset types, metadata fields, and taxonomy structures. Understanding and correctly mapping this model is essential for effective scripting.
 
-1.  Begin with a detailed analysis of Sitecore Content Hub’s entity model, including asset types, metadata structures, and taxonomies.
+When building a script:
+
+1.  Begin with an analysis of the entity model, including asset types, metadata structures, and taxonomies. Consider which of these your customisation may touch or could leverage.
     
 2.  Establish a clear mapping of these relationships to guide scripting and avoid errors.
     
 3.  Consider which custom schema or members are required in order to create desired script outputs.
     
-4.  Documentation of this model provides a reliable reference that can be used across different scripts, reducing the risk of inconsistencies and errors.
+4.  Document this model to provide a reliable reference that can be used across different scripts, reducing the risk of inconsistencies and errors.
     
 
-For example, suppose you’re automating asset ingestion, and you need to assign each asset to the correct category, and to set metadata based on its type (e.g., image, video, document). Before writing any script, document the entire asset structure and related entities — such as category taxonomies, required metadata fields, and parent-child relationships. This helps prevent misclassification and ensures the script respects Content Hub’s entity relationships, reducing the chance of improperly linking or tagging assets.
+For example, suppose you’re automating asset ingestion, and you need to assign each asset to the correct category, and to set metadata based on its type (e.g., image, video, document).
+
+Before writing any script, document the entire asset structure and related entities — such as category taxonomies, required metadata fields, and parent-child relationships. This helps prevent misclassification and ensures the script respects Content Hub’s entity relationships, reducing the chance of improperly linking or tagging assets.
+
+It is also important to feed back to the project stakeholders with this documentation, as often edge cases are identified. These can be more difficult to correct later, especially if a bulk data update is required.
 
 ### 2\. Learn and Leverage Sitecore’s SDKs
 
-Sitecore Content Hub scripting uses SDK interactions, which requires knowledge of the Content Hub SDKs and data structures. Developers must understand best practice to ensure scripts are efficient and performant, especially when the Content Hub instance contains large volumes of assets or metadata.
+Sitecore Content Hub scripting requires knowledge of the Content Hub SDKs and data structures.
+
+Developers must understand best practice to ensure scripts are efficient and performant, especially when the Content Hub instance contains large volumes of assets or metadata.
 
 1.  Familiarise the development team with the Sitecore Content Hub Scripting SDK by utilising Sitecore’s comprehensive documentation to ensure scripts that interact with assets and metadata are both correct and optimised.
     
-2.  Code should be structured carefully to balance performance and resource usage.
+2.  Although this recipe is focused on Scripts, it is also important to understand the different phases of an entity update (Pre-commit, Validation, Security, Audit, Post) and the special Script types Metadata Processing and User events. Phases have different context variables available to support development.
     
-3.  Although this recipe is focused on Scripts, it is also important to understand the different phases of an entity update (Pre-commit, Validation, Security, Audit, Post) and the special Script types Metadata Processing and User events. Phases have different context variables available to support development.
-    
-4.  For advanced Content Hub developers; Shared scripts may be an option for re-using commonly used code.
+3.  For advanced Content Hub developers; Shared scripts may be an option for re-using commonly used code.
     
 
 ### 3\. Implement error handling and logging
@@ -94,15 +93,17 @@ Errors may stem from various sources, including incorrect SDK calls, data mismat
 
 ### 4\. Optimise for performance and scalability
 
-Scripts that manage extensive datasets or complex workflows can impact Content Hub’s performance. Ensuring scripts are optimised to handle large volumes of assets or complex processing tasks without slowing down the system is critical, particularly for high-traffic environments or content-heavy implementations.
+Scripts that manage extensive datasets or complex workflows can impact Content Hub’s performance. Ensuring scripts are optimised to handle complex processing tasks without slowing down the system is critical, particularly for high-traffic environments or content-heavy implementations.
 
-1.  To ensure scripts operate efficiently, design them to handle operations in manageable batches and leverage caching mechanisms when possible.
+In most cases, Scripts are not the correct approach for doing bulk updates, rather they are intended for atomic operations. See the Platform Constraints section for more details.
+
+1.  Ensure you use the async versions of method calls where possible to reduce blocking calls on the system.
     
-2.  If a Script is performing bulk operations it may be more appropriate to use an External Implementation as Scripts are not intended to run for long periods.
+2.  Review Script Telemetry reports to see which scripts are using the most processing time or are called most often. These are candidates for optimisation.
     
 3.  Testing script performance in a development or staging environment with sample datasets can identify potential performance issues before deployment, reducing the risk of system slowdowns when managing large content volumes.
     
-4.  Ensure you use the async versions of method calls where possible to reduce blocking calls on the system.
+4.  If a Script is performing bulk operations it may be more appropriate to use an External Implementation as Scripts are not intended to run for long periods.
     
 5.  Use the correct Script Execution Type: There are two script execution types:
     
@@ -110,12 +111,10 @@ Scripts that manage extensive datasets or complex workflows can impact Content H
         
     2.  _In Background_ - this type of script runs behind the scenes, without causing interruption. For performance reasons, always favour this script execution type.
         
-6.  Review Script Telemetry reports to see which scripts are using the most processing time or are called most often. These are candidates for optimisation
-    
 
 ### 5\. Work within platform constraints
 
-Sitecore Content Hub enforces limitations, such as API rate limits, workflow dependencies, and permissions that affect what scripts can achieve. These constraints often require careful planning and sometimes external implementations to ensure scripts operate smoothly and within system boundaries.
+Sitecore Content Hub enforces limitations on internal Scripts, such as execution limits, permissions and excluded libraries. External API calls are not possible.
 
 1.  Avoid doing bulk or long running operations with scripts. Sitecore recommend keeping the total script run time below 10 minutes. After 12 minutes, the script worker considers the script stuck and starts a new worker to relaunch it. This can cause resource starvation and data inconsistency.
     
@@ -128,18 +127,18 @@ Sitecore Content Hub enforces limitations, such as API rate limits, workflow dep
 
 Scripting documentation must be thorough and accessible, as each script may need to be updated or repurposed over time.
 
-1.  Document each script’s purpose, affected entities, and dependencies to simplify future maintenance and updates. Document details of the script’s triggers as appropriate.
-    
-2.  Using a version control system allows tracking of script changes over time, making it easier to roll-back if needed and to manage script updates in line with platform changes or new requirements.
-    
-3.  This version control could be extended into an automated deployment process using the Content Hub CLI (see documentation below) or other API hooks.
-    
-4.  Define a naming convention for Scripts. Try and include which schema are source and targets in the name (e.g. \<Company Name\> - Asset copy Campaign data to related Campaign Entity). Benefits include:
+1.  Define a naming convention for Scripts. Try and include which schema are source and targets in the name (e.g. \<Company Name\> - Asset copy Campaign data to related Campaign Entity). Benefits include:
     
     1.  Easier searching and finding of Scripts within the Manage → Scripts page.
         
     2.  Easier trail on which Trigger Events on which Entities are calling which Scripts.
         
+2.  Document each script’s purpose, affected entities, and dependencies to simplify future maintenance and updates. Document details of the script’s triggers as appropriate.
+    
+3.  Using a version control system allows tracking of script changes over time, making it easier to roll-back if needed and to manage script updates in line with platform changes or new requirements.
+    
+4.  This version control could be extended into an automated deployment process using the Content Hub CLI (see documentation below) or other API hooks.
+    
 
 ### 7\. Testing and Monitoring
 
@@ -168,7 +167,7 @@ The examples are designed to show the classes, methods, parameters and general a
 
 When experimenting with these, always do so in a sandbox or development environment.
 
-Please note that all examples provided in this section are provided as-is with no guarantee.
+The provided code is intended as a guideline and must be tailored to suit your specific implementation requirements. Please ensure thorough end-to-end testing is conducted to validate its functionality and performance in your environment.
 
 ### Add user to default UserGroup on first login
 
@@ -301,176 +300,7 @@ You can find more on Impersonation in the documentation.
 | --- | --- |
 | User sign-in | User sign-in |
 
-```csharp
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System.Linq;
-const string Constants_DraftSetting = "Drafts";
-const string Constants_Everyone = "Everyone";
-const string Constants_SSOGroupMapping = "SSOGroupMapping";
-const string Constants_UserGroupConfiguration = "UserGroupConfiguration";
-const string Constants_UserGroupIds = "user_group_ids";
-const string Constants_SettingValue_GroupMapping = "groupMapping";
-const string Constants_SettingValue_GroupMapping_External = "external";
-const string Constants_SettingValue_GroupMapping_Internal = "internal";
-const string Constants_Claims_Type_GroupId = "groupid";
-const string Constants_Properties_MSettingValue = "M.Setting.Value";
-const string Constants_Relations_UserGroupToUser = "UserGroupToUser";
-const string Constants_Logging_BasicAuthenticationLogin = "Basic authentication login";
-const string Constants_Logging_SignInScriptStarted = "Sign in script started";
-const string Constants_Logging_UserGroupToUserRelationNotFound = "UserGroupToUser relation for current user not found";
-static string Constants_Logging_Exception(string message) => $"Exception: {message}";
-static string Constants_Logging_ExternalUserInfoClaims(string claims) => $"Claims from current logging: {claims}";
-static string Constants_Logging_GroupNameNotFound(string groupId, long settingId) => $"Group name: {groupId} not found or has been not mapped to the current user. Please check if name is mapped correctly in the setting with id {settingId}";
-static string Constants_Logging_NotFound(string name) => $"Not found: {name}";
-static string Constants_Logging_SettingNotFound(string settingCategory, string setting) => $"Setting category: {settingCategory}, setting: {setting} has not been found";
-static string Constants_Logging_SettingValueIncorrect(string constants_DraftSetting, string constants_SSOGroupMapping) => "$Setting category: {settingCategory}, setting: {setting} is not Json or empty";
-static string Constants_Logging_UserGroupAssigned(long userGroupId, long? userId) => $"UserGroup: {userGroupId} added for User: {userId.Value}";
-static string Constants_Logging_UserGroupNotFound(string groupName) => $"Group name: {groupName} not found among existing userGroups in the Content Hub";
-static string Constants_Logging_UserUpdated(long? id) => $"User: {id.Value} updated";
-
-IDictionary<string, string> _groupMappingsDict = new Dictionary<string, string>();
-try
-{
-    MClient.Logger.Info(Constants_Logging_SignInScriptStarted);
-
-    if (Context.ExternalUserInfo?.Claims == null)
-    {
-        MClient.Logger.Info(Constants_Logging_BasicAuthenticationLogin);
-        return;
-    }
-
-    var claims = JsonConvert.SerializeObject(Context.ExternalUserInfo.Claims);
-
-    MClient.Logger.Info(Constants_Logging_ExternalUserInfoClaims(claims));
-
-    var settings = await MClient.Settings.GetSettingAsync(Constants_DraftSetting, Constants_SSOGroupMapping).ConfigureAwait(false);
-
-    var settingValue = settings?.GetProperty<ICultureInsensitiveProperty>(Constants_Properties_MSettingValue);
-
-    if (settingValue == null)
-    {
-        MClient.Logger.Error(Constants_Logging_SettingNotFound(Constants_DraftSetting, Constants_SSOGroupMapping));
-        return;
-    }
-
-    var settingJobjectValue = settingValue.GetValue<JObject>();
-
-    if (settingJobjectValue == null)
-    {
-        MClient.Logger.Error(Constants_Logging_SettingValueIncorrect(Constants_DraftSetting, Constants_SSOGroupMapping));
-        return;
-    }
-
-    var settingGroupMappings = settingJobjectValue[Constants_SettingValue_GroupMapping];
-
-    if (settingGroupMappings == null)
-    {
-        MClient.Logger.Error(Constants_Logging_NotFound(Constants_SettingValue_GroupMapping));
-        return;
-    }
-
-    foreach (var mapping in settingGroupMappings)
-    {
-        var internalKey = mapping[Constants_SettingValue_GroupMapping_Internal]?.Value<string>();
-        var externalKey = mapping[Constants_SettingValue_GroupMapping_External]?.Value<string>();
-
-        MClient.Logger.Debug($"internalKey:{internalKey} externalKey:{externalKey}");
-
-        if (internalKey != null && externalKey != null)
-        {
-            _groupMappingsDict.Add(externalKey, internalKey);
-        }
-    }
-
-    var claimsTypeGroups = Context.ExternalUserInfo?.Claims.Where(c => c.Type == Constants_Claims_Type_GroupId);
-
-    foreach(var claim in Context.ExternalUserInfo?.Claims)
-    {
-        MClient.Logger.Debug($"claim: {claim}");
-    }
-
-    if(claimsTypeGroups.Count() == 0)
-    {
-        MClient.Logger.Warn($"claimsTypeGroups.Count: {claimsTypeGroups.Count()}");
-        return;
-    }
-
-    var groupIDs = new List<long>();
-
-    foreach(var claimsTypeGroupId in claimsTypeGroups.Select(x => x.Value))
-    {
-        if (!_groupMappingsDict.ContainsKey(claimsTypeGroupId))
-        {
-            MClient.Logger.Warn(Constants_Logging_GroupNameNotFound(claimsTypeGroupId, settings.Id.Value));
-            continue;
-        }
-
-        var internalGroupName = _groupMappingsDict[claimsTypeGroupId];
-        var internalGroup = await MClient.Users.GetUserGroupAsync(internalGroupName).ConfigureAwait(false);
-        if (internalGroup == null)
-        {
-            MClient.Logger.Error(Constants_Logging_UserGroupNotFound(internalGroupName));
-            continue;
-        }
-        else if (!groupIDs.Contains(internalGroup.Id.Value))
-        {
-            groupIDs.Add(internalGroup.Id.Value);
-        }
-    }
-
-    if(groupIDs.Count() == 0)
-    {
-        MClient.Logger.Warn($"groupIDs.Count: {claimsTypeGroups.Count()}, no group will be assigned");
-        return;
-    }
-
-    var userGroupEveryone = await MClient.Entities.GetAsync(Constants_Everyone).ConfigureAwait(false);
-
-    if (userGroupEveryone == null)
-    {
-        MClient.Logger.Error(Constants_Logging_UserGroupNotFound(Constants_Everyone));
-        return;
-    }
-
-    if (!groupIDs.Contains(userGroupEveryone.Id.Value))
-    {
-        groupIDs.Add(userGroupEveryone.Id.Value);
-    }   
-
-    var userGroupsToUserRelation = await Context.User.GetRelationAsync<IChildToManyParentsRelation>(Constants_Relations_UserGroupToUser).ConfigureAwait(false);
-    if (userGroupsToUserRelation == null)
-    {
-        MClient.Logger.Error(Constants_Logging_UserGroupToUserRelationNotFound);
-        return;
-    }
-
-    userGroupsToUserRelation.Parents.Clear();
-    groupIDs.ForEach(i => userGroupsToUserRelation.Parents.Add(i));
-
-    var userGroupConfigurationProperty = Context.User.GetPropertyValue<JToken>(Constants_UserGroupConfiguration);
-    if (userGroupConfigurationProperty != null)
-    {
-        var userGroupIdsToken = userGroupConfigurationProperty.SelectToken(Constants_UserGroupIds);       
-        userGroupIdsToken.Replace(JToken.FromObject(groupIDs));
-        Context.User.SetPropertyValue(Constants_UserGroupConfiguration, userGroupConfigurationProperty);
-    }
-    else
-    {
-        MClient.Logger.Info(Constants_Logging_NotFound(Constants_UserGroupConfiguration));
-    }
-
-    await MClient.Entities.SaveAsync(Context.User);
-    MClient.Logger.Info(Constants_Logging_UserUpdated(Context.User.Id));
-}
-catch (Exception ex)
-{
-    MClient.Logger.Error(Constants_Logging_Exception(ex.Message));
-    throw;
-}
-```
+See the Functional Security SSO recipe for an in-depth walkthrough.
 
 ### Metadata processing - capture photo meta data
 
@@ -681,8 +511,8 @@ else
 | --- | --- |
 |     | **Recipe** |
 | 1   | [Triggers and Actions](Triggers-and-Actions) |
-| 2   | [CH Discovery](CH-Discovery) |
-| 3   | [CH External Scripting Guidance and Scenarios](CH-External-Scripting-Guidance-and-Scenarios) |
+| 2   | [CH Discovery](discovery) |
+| 3   | [CH External Integrations](external-integrations) |
 | 4   | [SSO and Auto-Assignment](SSO-and-Auto-Assignment) |
 | 5   |     |
 

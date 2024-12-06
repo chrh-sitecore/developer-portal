@@ -4,7 +4,7 @@ description: 'This recipe describes how to configure SSO on Content Hub with Azu
 hasSubPageNav: true
 hasInPageNav: true
 area: ['accelerate']
-lastUpdated: '2024-11-26'
+lastUpdated: '2024-12-05'
 breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes > CH Implementation > CH Configuration > Functional Security (Users and User Groups)'
 author: 'Jeroen Feyaerts'
 audience: ''
@@ -16,6 +16,8 @@ As a company I want to centrally manage users and user access for the applicatio
 In order to achieve this I want to enable SSO login on Content Hub to verify the user’s identity on my IDP of choice. Additionally I would like to control the user access level based on the user Claims received after a successful login into my IDP.
 
 For this recipe we are using Microsoft Entra ID (previous called Microsoft Azure AD).
+
+This recipe focuses on authentication through Content Hub, if you are using Sitecore Cloud Portal please review the [documentation](https://doc.sitecore.com/ch/en/users/content-hub/authentication.html).
 
 ## ![(lightbulb)](/images/learn/accelerate/content-hub/img/icons/emoticons/lightbulb_on.png) Solution
 

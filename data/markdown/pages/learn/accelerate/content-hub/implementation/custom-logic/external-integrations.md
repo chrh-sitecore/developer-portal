@@ -1,43 +1,27 @@
 ---
-title: 'CH External Scripting Guidance and Scenarios'
+title: 'CH External Integrations'
 description: 'The Sitecore External Scripting Recipe outlines best practices for script-based integration for external systems and third-party APIs to integrate with Sitecore Content Hub.'
 hasSubPageNav: true
 hasInPageNav: true
 area: ['accelerate']
-lastUpdated: '2024-12-02'
+lastUpdated: '2024-12-05'
 breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes > CH Implementation > CH Custom Logic'
 author: 'Chris Howarth'
 audience: 'Technical Implementers (Developers), Solution Architects, Product Owners/Business Stakeholders'
 ---
-|     |     |
-| --- | --- |
-| **Recipe name** | CH External Scripting Guidance and Scenarios |
-| **Description** | The Sitecore External Scripting Recipe outlines best practices for script-based integration for external systems and third-party APIs to integrate with Sitecore Content Hub. |
-| **Reference Audience** | Technical Implementers (Developers), Solution Architects, Product Owners/Business Stakeholders |
-| **Jira #** | RCPS-9 - CH Scripting Guidance And Scenarios Authoring |
-| **Project Step** | Implementation |
-| **Chapter** | Custom Logic |
-
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) **Context**
 
-In this recipe we cover the primary APIs: REST, WebClient, Fluent, and the JavaScript SDK and when to use them.
+While Sitecore offers strong internal Scripting capabilities, supported with its Actions and Triggers framework, there are certain use-cases which are more appropriate to implement via external scripting.
+
+Use-cases include bulk tasks, scheduled tasks and integrations with other platforms where data might be read from or sent to Content Hub. Internal scripts are not intended for long-running operations.
 
 Sitecore Content Hub supports external scripting through its REST API, WebClient SDK, Fluent SDK, and JavaScript SDK. These tools enable automation, data synchronisation, and integration with third-party systems.
-
-*   **REST API**: Ideal for cross-platform, language-agnostic integrations.
-    
-*   **WebClient SDK**: Optimised for .NET applications, simplifying client-side operations.
-    
-*   **Fluent SDK**: Reduces repetitive tasks in .NET environments with an intuitive syntax.
-    
-*   **JavaScript SDK**: Best for browser-based apps and dynamic web solutions.
-    
-
-While Content Hub’s external scripting possibilities are very strong, we recommend the use of Connectors as the first port of call due to ease of management, Sitecore support, and integration with Sitecore products.
 
 ## ![(lightbulb)](/images/learn/accelerate/content-hub/img/icons/emoticons/lightbulb_on.png) **Execution**
 
 ### REST API
+
+Ideal for cross-platform, language-agnostic integrations.
 
 *   The Sitecore REST API provides a hypermedia-driven way to interact with Content Hub resources through standard HTTP methods like GET, POST, PUT, and DELETE, representing and transferring resource data as JSON. Developers can navigate and manipulate resources using hyperlinks rather than hardcoding URLs. Example uses include retrieving assets (GET requests), creating new entities (POST), or updating resource properties (PUT). Access is through HTTPS endpoints, and throttling must be managed in code - (i.e. via HTTP 429 error management). For full usage examples and best practices, refer to the documentation.
     
@@ -46,13 +30,15 @@ While Content Hub’s external scripting possibilities are very strong, we recom
 
 ### WebClient SDK
 
-*   The Sitecore WebClient SDK is a .NET-based library that simplifies interactions with the Content Hub REST API, making it suitable for serverless applications like Azure Functions and Durable Functions. In these environments, the SDK can:
+Optimised for .NET applications.
+
+*   The Sitecore WebClient SDK is a .NET-based library that simplifies interactions with the Content Hub REST API, making it suitable for serverless applications like Azure Functions and Durable Functions. In these environments, the SDK can be use to:
     
     1.  **Fetch or Push Content**: Automate retrieval or updates of digital assets and metadata.
         
-    2.  **Data Processing**: Perform transformations or validation on entities.
+    2.  **Process Data**: Perform transformations or validation on entities.
         
-    3.  **Integration**: Synchronise Content Hub data with external systems or services.
+    3.  **Integrate**: Synchronise Content Hub data with external systems or services.
         
     
     Its robust authentication and built-in capabilities streamline cloud-based operations, reducing boilerplate code and improving reliability.
@@ -91,7 +77,13 @@ Enables browser-based applications to interact with Content Hub.
 
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f5e8.png) **Insights**
 
-### REST API Example using Postman (or similiar)
+### Which API Should I Use?
+
+For most use cases we recommend the WebClient SDK or Fluent SDK for implementations. .NET is a proven technology and is understood widely by Sitecore. This is also true of the REST API, however .NET provides a platform, whether running in a serverless environment or as a traditional program, e.g. Azure Functions or a console app.
+
+Most implementations that we see from customers are using the WebClient SDK. Otherwise we see implementations leveraging the REST API via 3rd party platforms.
+
+### REST API Example
 
 This approach fetches assets from the Content Hub using Postman for debugging and exploration.
 

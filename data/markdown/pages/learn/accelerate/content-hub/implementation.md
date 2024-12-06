@@ -9,8 +9,8 @@ breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes
 author: 'Eric Weiss'
 audience: ''
 ---
-*   [CH Configuration](CH-Configuration)
-*   [CH Custom Logic](CH-Custom-Logic)
+*   [CH Configuration](configuration)
+*   [CH Custom Logic](custom-logic)
 *   [CH QA](CH-QA)
-*   [CH Connectors and Integrations](CH-Connectors-and-Integrations)
+*   [CH Connectors and Integrations](connectors-and-integrations)
 *   [Testing and Quality Assurance](Testing-and-Quality-Assurance)

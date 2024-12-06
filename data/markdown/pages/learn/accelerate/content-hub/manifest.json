@@ -6,25 +6,27 @@
   "showRootAsSections": true,
   "routes": [
     {
-      "title": "Pre-development (temp)",
-      "path": "pre-development,-implementation,-final-steps,-appendix",
+      "title": "Pre-development",
+      "path": "pre-development",
       "ignoreLink": true,
       "children": [
         {
-          "title": "Debugging User Security",
-          "path": "debugging-user-security"
+          "title": "Discovery",
+          "path": "discovery"
         },
         {
-          "title": "Migration Guide",
-          "path": "migration-guide"
+          "title": "Project Management",
+          "path": "project-management",
+          "children": [
+            {
+              "title": "Project Planning",
+              "path": "project-planning"
+            }
+          ]
         },
         {
           "title": "State Flow and Approval Setup",
           "path": "state-flow-and-approval-setup"
-        },
-        {
-          "title": "Project Planning",
-          "path": "ch-project-planning"
         }
       ]
     },
@@ -85,11 +87,11 @@
           "children": [
             {
               "title": "Internal Scripts Guidance and Scenarios",
-              "path": "ch-scripts-guidance-and-scenarios"
+              "path": "scripts-guidance-and-scenarios"
             },
             {
-              "title": "External Scripting Guidance and Scenarios",
-              "path": "CH-External-Scripting-Guidance-and-Scenarios"
+              "title": "External Integrations Guidance and Scenarios",
+              "path": "external-integrations"
             }
           ]
         }
@@ -103,6 +105,10 @@
         {
           "title": "Testing and Quality Assurance",
           "path": "testing-and-quality-assurance"
+        },
+        {
+          "title": "Migration Guide",
+          "path": "migration-guide"
         }
       ]
     }

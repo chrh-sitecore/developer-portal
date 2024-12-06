@@ -7,7 +7,7 @@ area: ['accelerate']
 lastUpdated: '2024-11-21'
 breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes > CH Implementation > CH Custom Logic'
 author: 'Chris Howarth'
-audience: ''
+audience: 'Technical Implementers (Developers), Solution Architects'
 ---
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) **Context**
 

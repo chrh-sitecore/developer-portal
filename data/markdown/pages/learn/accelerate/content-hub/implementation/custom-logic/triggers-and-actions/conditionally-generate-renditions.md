@@ -1,13 +1,13 @@
 ---
 title: 'Conditionally generate renditions'
-description: 'This recipe describes how to conditionally generate a pre defined set of renditions by attaching an additional media processing Matrix'
+description: 'This recipe describes how to conditionally generate a predefined set of renditions by attaching an additional media processing Matrix'
 hasSubPageNav: true
 hasInPageNav: true
 area: ['accelerate']
-lastUpdated: '2024-11-28'
+lastUpdated: '2024-12-05'
 breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes > CH Implementation > CH Custom Logic > Triggers and Actions'
 author: 'Jeroen Feyaerts'
-audience: ''
+audience: 'Technical Implementers (Developers), Solution Architects'
 ---
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) **Context**
 
@@ -17,22 +17,22 @@ As we want to save some storage space we will attach an additional Media Process
 
 ## ![(lightbulb)](/images/learn/accelerate/content-hub/img/icons/emoticons/lightbulb_on.png) **Execution**
 
-The following steps are needed to achieve the desired functionality. A more detailed description of each step can be found below.
+The following steps are needed to achieve the desired functionality. A more detailed description of each step can be found below:
 
-1.  Add a new Media Processing Matrix
+1.  Add a new Media Processing Matrix.
     
-2.  Create a Script/Action that Attaches your newly create media matrix to a Target Asset
+2.  Create a Script/Action that Attaches your newly-created media matrix to a Target Asset.
     
-3.  Create a trigger that will be executed when specific conditions are met
+3.  Create a trigger that will be executed when specific conditions are met.
     
 
 ### Add a new Media Processing Matrix
 
 First of all we will need to create a new media processing matrix. This will allow us to pre-configure renditions that can be used for Social media.
 
-*   Go to Manage \> Media Processing as a super user
+*   Go to Manage \> Media Processing as a super user.
     
-*   Click the “New set” button and create a new set with the following details
+*   Click the “New set” button and create a new set with the following details:
     
     *   Name: _Social_
         
@@ -43,16 +43,16 @@ First of all we will need to create a new media processing matrix. This will all
 
 *   Once your new set has been created, you can go ahead and configure your desired media processing flow.
     
-*   Next **save** and **publish** your newly created media matrix to make it available.
+*   Next **Save** and **Publish** your newly created media matrix to make it available.
     
 
 ![image-20241122-131948.png](/images/learn/accelerate/content-hub/attachments/5452759211/5453349023.png?width=445)
 
-### Create a Script and Action that Attaches your newly created media matrix to a Target Asset
+### Create a Script and Action that attaches your newly created media matrix to a target Asset
 
-*   Go to Manage \> Script as a super user
+*   Go to Manage \> Script as a superuser.
     
-*   Create a new Script with the following details
+*   Create a new Script with the following details:
     
     *   Name: _PREFIX - Add Social Media Processing Matrix_
         
@@ -114,9 +114,9 @@ else
 }
 ```
 
-*   Next navigate to Actions (Manage \> Actions)
+*   Next navigate to Actions (Manage \> Actions).
     
-*   Create a New Action by Hitting the “New Action” button with the following details
+*   Create a New Action by Hitting the “New Action” button with the following details:
     
     *   Name: _PREFIX - Add Social Media Processing Matrix_
         
@@ -129,52 +129,52 @@ else
 
 ### Create a trigger
 
-*   Navigate to Manage \> Triggers
+*   Navigate to Manage \> Triggers.
     
-*   Create a new trigger by Hitting the New Trigger button
+*   Create a new trigger by hitting the New Trigger button.
     
 
 #### General
 
-Fill in the General tab with the following details
+Fill in the General tab with the following details:
 
 *   Name: _PREFIX - Add Social Media Processing Matrix_
     
 *   Objective: _Entity Creation, Entity Modification_
     
-    *   The Objective in combinations with the Conditions allows us to define when the trigger will be executed
+    *   The Objective in combinations with the Conditions allows us to define when the trigger will be executed.
         
 *   Execution type: _In Background_
     
-    *   We want to **avoid** as much as possible execution In Process as this will block the entity save process.
+    *   Use ‘In Background’ where possible as ‘In Process’ blocks the entity save process.
         
 
 ![image-20241122-134130.png](/images/learn/accelerate/content-hub/attachments/5452759211/5452923045.png?width=760)
 
 #### Conditions
 
-*   Add the “M.Asset” target definition as we want to run the trigger for Asset’s.
+*   Add the “M.Asset” target definition as we want to run the trigger for Assets.
     
 *   We will first define to which conditions the asset need to apply in order to run the Action (the current state of the Asset)
     
-    *   Add Content Repository and Final Lifecycle conditions first as a good practice
+    *   Add Content Repository and Final Lifecycle conditions first as a good practice:
         
         *   **Final Lifecycle**: _Created, Under Review, Approved_
             
         *   **Content Repository**: Standard
             
-    *   Add an additional condition to filter on **Asset Type** “_Social_”
+    *   Add an additional condition to filter on **Asset Type** “_Social_”.
         
-    *   Finally we will also check if the _Social_ media processing matrix isn’t attached to our Asset Yet by adding a filter for **Media Matrix**
+    *   Finally we will also check if the _Social_ media processing matrix isn’t attached to our Asset Yet by adding a filter for **Media Matrix**.
         
-*   The second part of the Condition I like to reserve for identifying what has changed on my entity as I am only interested in relevant changes.
+*   The second part of the Condition is a good place to reserve for identifying what has changed on the entity (we are only interested in relevant changes):
     
     *   Add an additional filter on the **Asset Type** relation changes.
         
 
 ![image-20241122-140112.png](/images/learn/accelerate/content-hub/attachments/5452759211/5454659593.png?width=717)
 
-\> As a good practice, try to put as much conditions as possible that fits the situation on the trigger as we want to avoid any unnecessary executions of our script. In the above example I did split up Conditions that indicate the current state of the entity (top) and below Conditions that checks any relevant changes made on the entity.
+\> As a good practice, try to put as many conditions as possible that fit the situation on the trigger so we avoid any unnecessary executions of our script. In the above example we split up 1) Conditions that indicate the current state of the entity (top), and 2) Conditions that checks any relevant changes made on the entity (bottom).
 
 #### Actions
 
@@ -190,20 +190,20 @@ When adding the Social Taxonomy to your asset, the Facebook and Instagram rendit
 
 #### Actions Auditing
 
-We can check and verify that the trigger has run from the Actions Auditing screen.
+We can check and verify that the trigger has run from the Actions Auditing screen:
 
-*   Go to Manage \> Actions as a super user
+*   Go to Manage \> Actions as a superuser.
     
-*   On the Auditing tab we can see any trigger execution
+*   On the Auditing tab we can see any trigger execution.
     
 
 ![image-20241122-154610.png](/images/learn/accelerate/content-hub/attachments/5452759211/5455118393.png?width=760)
 
 #### Script Logging
 
-As there might be something wrong with your script, you can also check script logging.
+As there might be something wrong with your script, you can also check script logging:
 
-*   Navigate to your script and hit the “view logs” button
+*   Navigate to your script and hit the “view logs” button.
     
 
 ![image-20241122-154940.png](/images/learn/accelerate/content-hub/attachments/5452759211/5454888999.png?width=760)
@@ -231,7 +231,6 @@ Key takeaways, deeper analysis and considerations - this is the space where you 
 | 4   | [https://doc.sitecore.com/ch/en/developers/cloud-dev/create-a-trigger.html](https://doc.sitecore.com/ch/en/developers/cloud-dev/create-a-trigger.html) |
 | 5   | [https://doc.sitecore.com/ch/en/developers/cloud-dev/create-an-action.html](https://doc.sitecore.com/ch/en/developers/cloud-dev/create-an-action.html) |
 | 6   | [https://doc.sitecore.com/ch/en/users/content-hub/media-processing-use-cases.html](https://doc.sitecore.com/ch/en/users/content-hub/media-processing-use-cases.html) |
-| 7   |     |
 
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f517.png) Related Learning Materials
 

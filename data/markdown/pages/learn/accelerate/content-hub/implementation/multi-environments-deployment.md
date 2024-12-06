@@ -4,20 +4,11 @@ description: 'Managing deployments with multiple Content Hub Environments'
 hasSubPageNav: true
 hasInPageNav: true
 area: ['accelerate']
-lastUpdated: '2024-12-02'
+lastUpdated: '2024-12-04'
 breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes > CH Pre-Development'
 author: 'Dan Vella'
-audience: 'Pick Audience based on <a href="https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience" data-card-appearance="inline" rel="nofollow">https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience</a>'
+audience: 'Technical Implementers (Developers), Solution Architects, System Administrators/IT Ops'
 ---
-|     |     |
-| --- | --- |
-| **Recipe name** | Multi Environments Deployment |
-| **Description** | Managing deployments with multiple Content Hub Environments |
-| **Reference Audience** | Pick Audience based on [https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience](https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience) |
-| **Jira #** | RCPS-2 - DevOps and setting up for multiple environments. Ready for Peer Review |
-| **Project Step** | Implementation |
-| **Chapter** | N/A |
-
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) **Context**
 
 Content Hub implementations are often developed independently of the production instance, allowing for a separated space to build, configure and test any changes before releasing.
@@ -311,7 +302,7 @@ The script would of course need to be updated to first read the `environmentId` 
 |     |     |
 | --- | --- |
 |     | **Recipe** |
-| 1   | [CH External Components Guidance and Scenarios](CH-External-Components-Guidance-and-Scenarios) |
+| 1   | [CH External Components Guidance and Scenarios](external-components-guidance-and-scenarios) |
 | 2   | Future recipe on environment specific settings |
 
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f517.png) Related Documentation

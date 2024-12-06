@@ -57,7 +57,7 @@ Sitecore Accelerate Cookbook provides a set of recipes to guide the Implementati
         *   [Distribution of assets](Distribution-of-assets)
     *   [CH Custom Logic](CH-Custom-Logic)
         *   [CH Scripts Guidance and Scenarios](CH-Scripts-Guidance-and-Scenarios)
-        *   [CH External Scripting Guidance and Scenarios](CH-External-Scripting-Guidance-and-Scenarios)
+        *   [CH External Integrations](CH-External-Integrations)
         *   [CH External Components Guidance and Scenarios](CH-External-Components-Guidance-and-Scenarios)
         *   [Triggers and Actions](Triggers-and-Actions)
             *   [Conditionally generate renditions](Conditionally-generate-renditions)

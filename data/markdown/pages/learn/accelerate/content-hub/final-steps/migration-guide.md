@@ -9,15 +9,6 @@ breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes
 author: 'Korina Huizar'
 audience: 'Pick Audience based on <a href="https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience" data-card-appearance="inline" rel="nofollow">https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience</a>'
 ---
-|     |     |
-| --- | --- |
-| **Recipe name** | Migration Guide |
-| **Description** | Ensuring a Seamless and Structured Migration to Sitecore Content Hub |
-| **Reference Audience** | Pick Audience based on [https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience](https://sitecore.atlassian.net/wiki/spaces/CSH/pages/5352915088/Content+Creation+Guidelines#Audience) |
-| **Jira #** |     |
-| **Project Step** | Final Steps |
-| **Chapter** |     |
-
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) **Context**
 
 Migrating content into Sitecore Content Hub is a multi-step process that involves moving vast amounts of data, assets, metadata, and associated workflows from legacy systems. This migration must be handled meticulously to avoid data loss, ensure data integrity, and maintain the intended structure and functionality of digital assets. Inadequate planning or testing can lead to significant challenges, including data corruption, metadata mismatches, broken links, and user access issues.

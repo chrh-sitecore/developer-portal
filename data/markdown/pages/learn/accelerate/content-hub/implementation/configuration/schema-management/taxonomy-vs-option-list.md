@@ -1,19 +1,19 @@
 ---
 title: 'Taxonomy vs Option List'
-description: 'How to choose between a taxonomy and an option list when designing the domain model for Content Hub implementation.ORMaking the Right Metadata Choice: Taxonomy or Option List?ORBuilding a Scalable Domain Model with the Right Data Format'
+description: 'How to choose between a taxonomy and an option list when designing the domain model for Content Hub implementation.'
 hasSubPageNav: true
 hasInPageNav: true
 area: ['accelerate']
-lastUpdated: '2024-12-01'
+lastUpdated: '2024-12-04'
 breadcrumb: 'Sitecore Accelerate Cookbooks > Content Hub (CH) - Sitecore Recipes > CH Implementation > CH Configuration > Schema Management'
 author: 'Soumyadeep Ghosh Dastidar'
-audience: ''
+audience: 'Solution Architects'
 ---
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f914.png) Problem
+## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/2049.png) **Context**
 
 During implementation, defining the metadata structure for a field like _Region_ (populated with a list of all countries) presents a critical decision in Content Hub. Content Hub offers two options for such drop-downs: Taxonomy and Option List. Selecting the right format for _Region_ is essential, as it directly impacts the application’s performance and the overall domain model. However, the dilemma persists: should _Region_ be modeled as a taxonomy or an option list?
 
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f331.png) Solution
+## ![(lightbulb)](/images/learn/accelerate/content-hub/img/icons/emoticons/lightbulb_on.png) **Execution**
 
 One of the main solutions is to effectively structure the Region in the domain model by analyzing it as follows:
 
@@ -50,22 +50,11 @@ One of the main solutions is to effectively structure the Region in the domain m
 
 By defining _**Region**_ **as a taxonomy**, you ensure scalability, clarity, and optimal functionality in your domain model while meeting business requirements effectively.
 
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f5e8.png) Discussion
+## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f5e8.png) **Insights**
 
 There’s no one-size-fits-all answer—it varies based on the requirements and the field's role within the domain model. When choosing between taxonomies and option lists in Sitecore's Content Hub, the decision depends on factors like the number of values, need for hierarchy, security settings, and display requirements. For managing large sets, intricate structures, and scenarios needing protection or inheritance, taxonomies are the best choice. Conversely, option lists are effective for straightforward lists with fewer than fifty entries and no extra attributes.
 
-When deciding on the appropriate data type for your metadata, consider the following points:
-
-*   **Number of data items possible for metadata**: For lists with fewer than 50 items, an option list is suitable. For larger lists, a taxonomy is recommended.
-    
-*   **User Group Definition**: If you need to define user groups based on the metadata field, configure it as a taxonomy.
-    
-*   **Search Facets**: To use the field as a search facet in various search pages, it is advisable to set it up as a taxonomy.
-    
-*   **Metadata Storage**: To store additional details about the metadata field, such as type, name, and origin, configure it as a taxonomy. Option lists are limited to serving as data sources and do not support extended metadata.
-    
-*   **Hierarchy Levels**: An option list can support up to five hierarchical levels, whereas a taxonomy has no restriction on the number of hierarchical levels it can contain.
-    
+When deciding on the appropriate data type for your metadata, consider the following points:Number of data items possible for metadata: For lists with fewer than 50 items, an option list is suitable. For larger lists, a taxonomy is recommended.User Group Definition: If you need to define user groups based on the metadata field, configure it as a taxonomy.Search Facets: To use the field as a search facet in various search pages, it is advisable to set it up as a taxonomy.Metadata Storage: To store additional details about the metadata field, such as type, name, and origin, configure it as a taxonomy. Option lists are limited to serving as data sources and do not support extended metadata.Hierarchy Levels: An option list can support up to five hierarchical levels, whereas a taxonomy has no restriction on the number of hierarchical levels it can contain.
 
 ## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f517.png) Related Recipes
 
@@ -91,21 +80,5 @@ List any related Learning activity to this recipe.
 |     |     |
 | --- | --- |
 |     | **Learning link** |
-| 1   |     |
-| 2   |     |
-
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f517.png) Related 360 Activities
-
-|     |     |
-| --- | --- |
-|     | **Activity Link** |
-| 1   |     |
-| 2   |     |
-
-## ![(blue star)](/images/learn/accelerate/content-hub/img/icons/emoticons/72/1f517.png) Related Value Realization Framework Activities
-
-|     |     |
-| --- | --- |
-|     | **VRF Card Link** |
 | 1   |     |
 | 2   |     |
